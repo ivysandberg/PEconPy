@@ -35,6 +35,8 @@ pred = model.predict(X_test)
 print (y_test, pred)
 print(accuracy_score(y_test, pred))
 
+
+# Create a visual of the Gaussian generative model for each label
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 X, y = make_blobs(100, 23, centers=2, random_state=2, cluster_std=1.5)
