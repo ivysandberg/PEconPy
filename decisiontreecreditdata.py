@@ -3,7 +3,10 @@ import numpy as np
 from sklearn import tree
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import accuracy_score
-
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import AdaBoostClassifier
 
 path = '/Users/ivysandberg/mycode/PEconPy/default of credit card clients.csv'
 data = pd.read_csv(path, header=1)
@@ -38,17 +41,16 @@ print (y_test, pred)
 print (prob)
 print(accuracy_score(y_test, pred) * 100)
 
-from sklearn.metrics import confusion_matrix
+
 print (confusion_matrix(y_test, pred))
 
-from sklearn.metrics import classification_report
+
 print (classification_report(y_test, pred))
 
 
 # Now try ensemble methods of decision trees
 
 # Random Forest Classifier (bootstrap aggreagted decision trees)
-from sklearn.ensemble import RandomForestClassifier
 RFmodel = RandomForestClassifier(max_depth=4, random_state=0)
 RFmodel.fit(X_train, y_train)
 
@@ -60,14 +62,13 @@ RFpred = RFmodel.predict(X_test)
 print (accuracy_score(y_test, RFpred) * 100)
 
 
-from sklearn.metrics import confusion_matrix
+
 cm = pd.DataFrame(confusion_matrix(y_test, RFpred))
 print(cm)
 
 
 
 # AdaBoost (Boosted Tree)
-from sklearn.ensemble import AdaBoostClassifier
 ABmodel = AdaBoostClassifier()
 ABmodel.fit(X_train, y_train)
 ABpred = ABmodel.predict(X_test)
@@ -83,3 +84,5 @@ print ("Prediction Accuracy Scores:")
 print ("Decision Tree: ", DTtest)
 print ("Random Forest: ", RFtest)
 print ("AdaBoost: ", ABtest)
+
+ 
