@@ -9,6 +9,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
+from sklearn import svm
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 from pprint import pprint
@@ -17,12 +18,12 @@ from pprint import pprint
 # Write a piece of code to iterate over classifiers
 
 # list all the names of the Classifiers
-names = ['K Nearest Neighbors', 'Gaussian Naive Bayes', 'Bernoulli Naive Bayes', 
-'Decision Tree', 'Random Forest', 'AdaBoost']
+names = ['K Nearest Neighbors', 'Gaussian Naive Bayes', 'Bernoulli Naive Bayes',
+'Decision Tree', 'Random Forest', 'AdaBoost', 'Support Vector Machine']
 
 classifiers = [KNeighborsClassifier(3), GaussianNB(), BernoulliNB(),
- DecisionTreeClassifier(max_depth=3), RandomForestClassifier(max_depth=4, random_state=0), 
- AdaBoostClassifier()]
+ DecisionTreeClassifier(max_depth=3), RandomForestClassifier(max_depth=4, random_state=0),
+ AdaBoostClassifier(), svm.SVC(kernel='rbf', C=1, gamma='auto')]
 
 
 # import data
@@ -45,7 +46,7 @@ score = []
 for name, model in zip(names, classifiers):
     model.fit(X_train, y_train)
     pred = model.predict(X_test)
-    accuracy_scores = accuracy_score(y_test, pred)
+    accuracy_scores = accuracy_score(y_test, pred) * 100
     score.append(accuracy_scores)
     #print (score)
 
@@ -53,8 +54,3 @@ results = dict(zip(names, score))
 #print (results)
 
 pprint (results)
-
-
-
-
-
