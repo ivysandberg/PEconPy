@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 from sklearn.naive_bayes import BernoulliNB
-# there are 3 types of Naive Bayes - 
+# there are 3 types of Naive Bayes -
 # used Bernoulli for binary feature vectors, predictive accuracy = 0.78
 # tested Gaussian as well which assumes normally distributed features, predictive accuracy = 0.394
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 
