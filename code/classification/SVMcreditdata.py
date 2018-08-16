@@ -1,11 +1,11 @@
-import pandas as pd
 import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
+import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn import svm
 
-
-path = '/Users/ivysandberg/mycode/PEconPy/default of credit card clients.csv'
+# import data
+path = '/Users/ivysandberg/mycode/PEconPy/data/default of credit card clients.csv'
 data = pd.read_csv(path, header=1)
 data = pd.DataFrame(data)
 
@@ -19,15 +19,9 @@ y = np.array(data.iloc[:, 24]) # target = default payment next month(0/1)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30,
                                                     random_state=42)
 
-# instantiate learning model
-model = KNeighborsClassifier(n_neighbors=6)
+model = svm.SVC(kernel='rbf', C=1, gamma='auto')
 
-# fitting the model
 model.fit(X_train, y_train)
-
-# predict the response
 pred = model.predict(X_test)
-
-# evaluate accuracy
-print (y_test, pred)
-print(accuracy_score(y_test, pred))
+print (pred)
+print (accuracy_score(y_test, pred) * 100)

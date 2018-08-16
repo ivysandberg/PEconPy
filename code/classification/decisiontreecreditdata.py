@@ -8,19 +8,23 @@ from sklearn.metrics import classification_report
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
 
-path = '/Users/ivysandberg/mycode/PEconPy/default of credit card clients.csv'
+from yapf.yapflib.yapf_api import FormatFile
+FormatFile(
+    "/Users/ivysandberg/mycode/PEconPy/code/classification/decisiontreecreditdata.py",
+    in_place=True)
+
+path = '/Users/ivysandberg/mycode/PEconPy/data/default of credit card clients.csv'
 data = pd.read_csv(path, header=1)
 data = pd.DataFrame(data)
-
 
 # assign the design array - attributes excluding ID & target
 X = np.array(data.iloc[:, 1:23])
 # assign target variable as a numpy array
-y = np.array(data.iloc[:, 24]) # target = default payment next month(0/1)
+y = np.array(data.iloc[:, 24])  # target = default payment next month(0/1)
 
 # train test split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30,
-                                                    random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.30, random_state=42)
 
 # instantiate learning model
 model = tree.DecisionTreeClassifier(max_depth=3)
@@ -37,16 +41,13 @@ pred = model.predict(X_test)
 prob = model.predict_proba(X_test)
 
 # evaluate accuracy
-print (y_test, pred)
-print (prob)
+print(y_test, pred)
+print(prob)
 print(accuracy_score(y_test, pred) * 100)
 
+print(confusion_matrix(y_test, pred))
 
-print (confusion_matrix(y_test, pred))
-
-
-print (classification_report(y_test, pred))
-
+print(classification_report(y_test, pred))
 
 # Now try ensemble methods of decision trees
 
@@ -59,14 +60,10 @@ print(RFmodel.feature_importances_)
 
 # print Random Forest prediction accuracy score
 RFpred = RFmodel.predict(X_test)
-print (accuracy_score(y_test, RFpred) * 100)
-
-
+print(accuracy_score(y_test, RFpred) * 100)
 
 cm = pd.DataFrame(confusion_matrix(y_test, RFpred))
 print(cm)
-
-
 
 # AdaBoost (Boosted Tree)
 ABmodel = AdaBoostClassifier()
@@ -74,15 +71,12 @@ ABmodel.fit(X_train, y_train)
 ABpred = ABmodel.predict(X_test)
 print(accuracy_score(y_test, ABpred) * 100)
 
-
 # Compare Decision Tree, Random Forest, AdaBoost
 DTtest = accuracy_score(y_test, pred) * 100
 RFtest = accuracy_score(y_test, RFpred) * 100
 ABtest = accuracy_score(y_test, ABpred) * 100
 
-print ("Prediction Accuracy Scores:")
-print ("Decision Tree: ", DTtest)
-print ("Random Forest: ", RFtest)
-print ("AdaBoost: ", ABtest)
-
- 
+print("Prediction Accuracy Scores:")
+print("Decision Tree: ", DTtest)
+print("Random Forest: ", RFtest)
+print("AdaBoost: ", ABtest)
