@@ -61,6 +61,6 @@ for name, model in zip(names, classifiers):
     #print (score)
 
 results = dict(zip(names, score))
-#print (results)
+# print(results)
 
 pprint(results)
