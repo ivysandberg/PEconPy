@@ -50,6 +50,7 @@ print(df.groupby('terrorism').count())
 # examine distribution of target variable (in continuous form)
 plt.figure()
 sns.countplot(x='trans_terrorism_cj', data=df)
+plt.xticks(range(0,10))
 plt.show()
 
 # Create arrays for the features and target variable
@@ -90,13 +91,14 @@ print (classification_report(y_test, y_pred))
 # Compare classifiers
 # list all the names of the Classifiers
 names = [
-    'K Nearest Neighbors', 'Gaussian Naive Bayes', 'Bernoulli Naive Bayes',
+    'K Nearest Neighbors', 'Gaussian Naive Bayes', 'Multinomial Naive Bayes', 'Bernoulli Naive Bayes',
     'Decision Tree', 'Random Forest', 'AdaBoost', 'Support Vector Machine'
 ]
 
 classifiers = [
     KNeighborsClassifier(7),
     GaussianNB(),
+    MultinomialNB(),
     BernoulliNB(),
     DecisionTreeClassifier(max_depth=3),
     RandomForestClassifier(max_depth=4, random_state=0),

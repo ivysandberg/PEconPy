@@ -23,7 +23,7 @@ df.describe()
 
 # Create a plots to examine specific features
 plt.figure()
-sns.countplot(x='variable', hue='target', data=, palette='RdBu')
+sns.countplot(x='variable', data=, palette='RdBu')
 plt.xticks([0,1], ['No', 'Yes'])
 plt.show()
 
