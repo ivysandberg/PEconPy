@@ -19,6 +19,7 @@ from sklearn import svm
 from pprint import pprint
 from sklearn.model_selection import KFold
 from sklearn.model_selection import cross_val_score
+from scipy.stats.stats import pearsonr
 
 from yapf.yapflib.yapf_api import FormatFile
 FormatFile(
@@ -174,5 +175,9 @@ plt.scatter(df['primary_exports'], df['trans_terrorism_cj'])
 
 new_data = pd.read_csv(
     '/Users/ivysandberg/Desktop/USxAustria_deltaExportValue.csv')
-new_pred = ABmodel.predict(new_data)
+#new_pred = ABmodel.predict(new_data)
 #print(new_pred)
+
+print(
+    "Pearson's correlation coefficient, 2-tailed p-value between primary exports and trans terrorism in country j",
+    pearsonr(df['primary_exports'], df['trans_terrorism_cj']))
