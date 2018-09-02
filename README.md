@@ -1,5 +1,5 @@
 # PEconPy
-<<<<<<< HEAD
+
 python classification algorithms on economic data as examples.
 
 This repo is divided by the python (3.6) code and the datasets. The code is divided into files showing how to implement classification algorithms and a more in depth economic study into the relationship between trade & terrorism.
