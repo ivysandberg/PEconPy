@@ -26,6 +26,4 @@ pandas
 numpy
 matplotlib
 sklearn
-=======
-python classification algorithms on economic data.
->>>>>>> 01425a3252f243030db9fc2261f9d4b93ee7f871
+
