@@ -8,7 +8,7 @@ This repo is divided by the python (3.6) code and the datasets. The code is divi
 code/classification
 Entails a bare python file drawing out a starting Classification framework for general best practices. Followed by a series of 'how-to' implementation examples of classification algorithms (K Nearest Neighbors, Naive Bayes, Decision Trees, Support Vector Machines) using credit default data as an example. Finally, CompareClassifiers shows how to loop all the classifiers demonstrated here for comparison.
 
-for more information on each of the algorithms explored here: https://docs.google.com/document/d/1vjbHKgNyfhAkRXsfoe0Gs3DkdW_wPKLxpPAkMKu4eGA/edit?usp=sharing
+for more information on each of the algorithms explored here: https://docs.google.com/document/d/1DQfQPuech2BkbQKsi9deVwnqs3nzVyvZfqGaU5niVws/edit?usp=sharing
 
 code/trade-terrorism
 trade-terror.py contains exploratory data analysis on the raw data.
